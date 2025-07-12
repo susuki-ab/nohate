@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>次はあなたがセカンド</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: rgb(176, 199, 245);
+      color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 35vw;
+      font-family: sans-serif;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="messageContainer">
+    <!-- 縦並びの文字がここに挿入される -->
+  </div>
+
+  <script>
+    const container = document.getElementById('messageContainer');
+
+    const messages = [
+      { text: '次は', duration: 600 },
+      { text: 'あなたが', duration: 600 },
+      { text: '「セカンド」', duration: 1050 }
+    ];
+
+    let index = 0;
+
+    function showNextMessage() {
+      const { text, duration } = messages[index];
+
+      // 一度中身を空にしてから再描画
+      container.innerHTML = '';
+      for (const char of text) {
+        const div = document.createElement('div');
+        div.textContent = char;
+        container.appendChild(div);
+      }
+
+      index = (index + 1) % messages.length;
+      setTimeout(showNextMessage, duration);
+    }
+
+    showNextMessage();
+  </script>
+</body>
+</html>
