@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>差別反対</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: rgb(176, 199, 245);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: black;
+      font-size: 60vw;
+      font-family: sans-serif;
+      line-height: 1;
+      transition: opacity 0.3s;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- 差別 -->
+  <div class="container" id="sabetsu">
+    <div>差</div>
+    <div>別</div>
+  </div>
+
+  <!-- 反対 -->
+  <div class="container hidden" id="hantai">
+    <div>反</div>
+    <div>対</div>
+  </div>
+
+  <script>
+    const sabetsu = document.getElementById('sabetsu');
+    const hantai = document.getElementById('hantai');
+
+    let showSabetsu = true;
+
+    setInterval(() => {
+      if (showSabetsu) {
+        sabetsu.classList.remove('hidden');
+        hantai.classList.add('hidden');
+      } else {
+        sabetsu.classList.add('hidden');
+        hantai.classList.remove('hidden');
+      }
+      showSabetsu = !showSabetsu;
+    }, 550); // ← 切り替え間隔（ミリ秒）
+  </script>
+</body>
+</html>
